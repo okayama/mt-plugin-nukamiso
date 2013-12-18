@@ -1,0 +1,72 @@
+name: Nukamiso
+id: Nukamiso
+key: nukamiso
+version: 0.1
+description: <__trans phrase="Utilities like 'Nukamiso'.">
+l10n_class: Nukamiso::L10N
+config_settings:
+    ResponseContentLogging:
+        default: 0
+        updatable: 1
+    ShowRecentLogs:
+        default: 0
+        updatable: 1
+    ShowErrorsOnly:
+        default: 0
+        updatable: 1
+    DraggablePopUpLog:
+        default: 1
+        updatable: 1
+list_properties:
+    log:
+        id:
+            default_sort_order: descend
+            display: default
+            filter_editable: 1
+            order: 10
+tags:
+    function:
+        dump: $nukamiso::Nukamiso::Tags::_hdlr_dump
+callbacks:
+    MT::App::CMS::pre_run: $nukamiso::Nukamiso::Plugin::_cb_cms_pre_run
+#    MT::App::CMS::template_param.header: $nukamiso::Nukamiso::Plugin::_cb_tp_header
+    MT::App::CMS::template_source.header: $nukamiso::Nukamiso::Plugin::_cb_ts_header
+    MT::App::CMS::template_source.footer: $nukamiso::Nukamiso::Plugin::_cb_ts_footer
+    list_template_param.log: $nukamiso::Nukamiso::Plugin::_cb_list_template_param_log
+    MT::App::CMS::take_down: $nukamiso::Nukamiso::Plugin::_cb_take_down
+    MT::Log::post_save: $nukamiso::Nukamiso::Plugin::_cb_log_post_save
+    MT::Log::pre_save: $nukamiso::Nukamiso::Plugin::_cb_log_pre_save
+    MT::App::CMS::template_param.edit_template: $nukamiso::Nukamiso::Plugin::_cb_tp_edit_template
+    MT::App::CMS::template_source.edit_template: $nukamiso::Nukamiso::Plugin::_cb_ts_edit_template
+init: $nukamiso::Nukamiso::Plugin::initializer
+widgets:
+    this_is_you:
+        condition: >
+            sub { 0 }
+    mt_news:
+        condition: >
+            sub { 0 }
+    favorite_blogs:
+        condition: >
+            sub { 0 }
+    blog_stats:
+        condition: >
+            sub { 0 }
+    recently_scored:
+        condition: >
+            sub { 0 }
+    recent_submissions:
+        condition: >
+            sub { 0 }
+    most_popular_entries:
+        condition: >
+            sub { 0 }
+    powercms_news:
+        condition: >
+            sub { 0 }
+    personal_stats:
+        condition: >
+            sub { 0 }
+    site_stats:
+        condition: >
+            sub { 0 }
